@@ -10,7 +10,7 @@ export default class WorkController {
             {
                 id: "immerseLearning",
                 title: "Immerse Learning Platform",
-                infoTemplateUrl: "/templates/work-info-immerse.html",
+                infoTemplateUrl: "/static/templates/work-info-immerse.html",
                 infoShown: false,
                 rowSpan: 2,
                 colSpan: 3,
@@ -20,7 +20,7 @@ export default class WorkController {
             {
                 id: "drawBuzz",
                 title: "Drawbuzz",
-                infoTemplateUrl: "/templates/work-info-drawbuzz.html",
+                infoTemplateUrl: "/static/templates/work-info-drawbuzz.html",
                 infoShown: false,
                 rowSpan: 1,
                 colSpan: 2,
@@ -30,7 +30,7 @@ export default class WorkController {
             {
                 id: "colorCrumble",
                 title: "Color Crumble",
-                infoTemplateUrl: "/templates/work-info-color-crumble.html",
+                infoTemplateUrl: "/static/templates/work-info-color-crumble.html",
                 infoShown: false,
                 rowSpan: 2,
                 colSpan: 2,
@@ -40,7 +40,7 @@ export default class WorkController {
             {
                 id: "topOfTheBottles",
                 title: "Top of the Bottles",
-                infoTemplateUrl: "/templates/work-info-top-bottles.html",
+                infoTemplateUrl: "/static/templates/work-info-top-bottles.html",
                 infoShown: false,
                 rowSpan: 1,
                 colSpan: 3,

@@ -1,0 +1,28 @@
+application: alechewitt
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+## re-direct to index.html if no path is give
+#handlers:
+#- url: /.*
+#  static_files: dist/index.html
+#  upload: dist/index.html
+
+handlers:
+- url: /dist/(.*\.js)
+  mime_type: text/javascript
+  static_files: dist/\1
+  upload: dist/(.*\.js)
+
+- url: /static/(.+)
+  static_files: static/\1
+  upload: static/(.*)
+
+- url: /send_email
+  script: main.app
+
+- url: /.*
+  static_files: index.html
+  upload: index.html
