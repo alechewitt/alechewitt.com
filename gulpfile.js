@@ -9,6 +9,8 @@ const exec = require("child_process").exec;
 const spawn = require("child_process").spawn;
 const sequence = require("run-sequence");
 const uglify = require("gulp-uglify");
+const eslint = require("gulp-eslint");
+
 
 
 
@@ -21,6 +23,17 @@ const sourcemaps = require("gulp-sourcemaps");
 
 
 var watch = true;
+
+
+gulp.task("lint", function() {
+    var files = "src/**/*.js";
+    gutil.log("Linting files:", files);
+    return gulp.src(files)
+        .pipe(buffer())
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failOnError())
+});
 
 /**
  * Bundles a set of files with a path, filename and production flag.
@@ -45,8 +58,6 @@ var bundle = function (bundler, path) {
             gutil.log("Created bundle:", gutil.colors.green(path + "/bundle.js"));
         });
 };
-
-
 
 
 

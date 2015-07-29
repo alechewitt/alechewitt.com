@@ -35,9 +35,52 @@
         .marginBNone {
             margin-bottom : 0;
         }
-        .width100{
-            width:100%;
+
+        .width100 {
+            width : 100%;
         }
+
+
+        .workTiles #immerseLearning {
+            background          : url("https://immerselearning.com/images/work-oil-english.jpg");
+            background-size     : cover;
+            background-repeat   : no-repeat;
+            background-position : center center;
+        }
+
+        .workTiles #topOfTheBottles {
+            background          : url("/static/top_of_the_bottles.png");
+            background-size     : cover;
+            background-repeat   : no-repeat;
+            background-position : center center;
+        }
+
+        .workTiles #drawBuzz {
+            background          : url("/static/draw_buzz.png");
+            background-size     : cover;
+            background-repeat   : no-repeat;
+            background-position : center center;
+        }
+        .workTiles #colorCrumble {
+            background          : url("/static/color_crumble.png");
+            background-size     : cover;
+            background-repeat   : no-repeat;
+            background-position : center center;
+        }
+
+        .workTiles md-grid-tile md-grid-tile-footer {
+            background : rgba(0, 0, 0, 0.68);
+            /*height: 36px; */
+        }
+
+        .infoSheet {
+            background : rgba(0, 0, 0, 0.68);
+            color      : white;
+        }
+        .colorWhite {
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -52,6 +95,7 @@
 
     <div class="width100">
         <md-content class="md-padding">
+            <!--<md-tabs md-border-bottom>-->
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="about">
                     <md-content class="md-padding">
@@ -67,20 +111,93 @@
                 <md-tab label="contact">
                     <contact-form></contact-form>
 
-                    <!--<md-content>-->
-                        <!-- -->
-
-                    <!--</md-content>-->
                 </md-tab>
 
                 <md-tab label="work">
                     <md-content class="md-padding">
-                        <h2 class="md-display-2">Work</h2>
+                        <h2 class="md-display-1">Work</h2>
 
-                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere
-                            molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
-                            erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac
-                            est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                        <p>Below is a selection of my work</p>
+
+
+                        <div ng-controller="WorkController as workCtrl" flex>
+                            <md-grid-list
+                                    md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5"
+                                    md-row-height-gt-md="1:1" md-row-height="4:3"
+                                    md-gutter="8px" md-gutter-gt-sm="4px" class="workTiles">
+
+                                <md-grid-tile ng-repeat="tile in workCtrl.workTiles"
+                                        md-rowspan="{{tile.rowSpan}}"
+                                        md-colspan="{{tile.colSpan}}"
+                                        md-colspan-md="{{tile.colSpanMd}}"
+                                        md-colspan-sm="{{tile.colSpanSm}}"
+                                        id="{{tile.id}}">
+                                    <md-grid-tile-footer ng-hide="tile.infoShown" class="md-padding">
+                                        <md-button ng-click="workCtrl.showInfo(tile)" flex>
+                                            {{tile.title}}
+                                        </md-button>
+                                    </md-grid-tile-footer>
+                                </md-grid-tile>
+
+                                <!--<md-grid-tile-->
+                                        <!--md-rowspan="2"-->
+                                        <!--md-colspan="3"-->
+                                        <!--md-colspan-sm="1"-->
+                                        <!--id="immerseLearning">-->
+                                    <!--<md-grid-tile-footer ng-hide="workCtrl.isInfoShown()" class="md-padding">-->
+                                        <!--<md-button ng-click="workCtrl.showInfo('immersePlatformWork')" style="width:100%" flex>Immerse Learning-->
+                                            <!--Platform-->
+                                        <!--</md-button>-->
+                                    <!--</md-grid-tile-footer>-->
+                                <!--</md-grid-tile>-->
+
+
+                                <!--<md-grid-tile-->
+                                        <!--md-rowspan="1"-->
+                                        <!--md-colspan="2"-->
+                                        <!--md-colspan-sm="1"-->
+                                        <!--id="drawBuzz">-->
+                                    <!--&lt;!&ndash;<md-icon md-svg-icon="{{tile.icon}}"></md-icon>&ndash;&gt;-->
+                                    <!--<md-grid-tile-footer>-->
+                                        <!--<md-button ng-click="workCtrl.showInfo('immersePlatformWork')">Drawbuzz-->
+                                        <!--</md-button>-->
+
+                                    <!--</md-grid-tile-footer>-->
+                                <!--</md-grid-tile>-->
+
+                                <!--<md-grid-tile-->
+                                        <!--md-rowspan="2"-->
+                                        <!--md-colspan="2"-->
+                                        <!--md-colspan-sm="1"-->
+                                        <!--class="green"-->
+                                        <!--id="colorCrumble">-->
+                                    <!--&lt;!&ndash;<md-icon md-svg-icon="{{tile.icon}}"></md-icon>&ndash;&gt;-->
+                                    <!--<md-grid-tile-footer>-->
+                                        <!--<md-button ng-click="workCtrl.showInfo('work2')">Color crumble</md-button>-->
+                                    <!--</md-grid-tile-footer>-->
+                                <!--</md-grid-tile>-->
+
+
+                                <!--<md-grid-tile-->
+                                        <!--md-rowspan="1"-->
+                                        <!--md-colspan="3"-->
+                                        <!--md-colspan-sm="1"-->
+                                        <!--id="topOfTheBottles">-->
+                                    <!--&lt;!&ndash;<md-icon md-svg-icon="{{tile.icon}}"></md-icon>&ndash;&gt;-->
+                                    <!--<md-grid-tile-footer ng-hide="workCtrl.isInfoShown()">-->
+                                        <!--<md-button ng-click="workCtrl.showInfo('topOfTheBottles')">Top of The Bottles-->
+                                        <!--</md-button>-->
+
+                                    <!--</md-grid-tile-footer>-->
+                                <!--</md-grid-tile>-->
+
+
+
+
+
+                            </md-grid-list>
+                        </div>
+
                     </md-content>
                 </md-tab>
             </md-tabs>
