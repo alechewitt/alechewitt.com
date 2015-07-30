@@ -47,7 +47,7 @@
 
 
         .workTiles #immerseLearning {
-            background          : url("https://immerselearning.com/images/work-oil-english.jpg");
+            background          : url("/static/images/immerse.jpg");
             background-size     : cover;
             background-repeat   : no-repeat;
             background-position : center center;
@@ -90,12 +90,20 @@
 </head>
 <body>
 <div layout="column" layout-align="center center">
-    <div>
-        <h1 class="md-display-4 marginBNone boldText"><span class="colorOne">alec</span><span
-                class="colorTwo">hewitt</span></h1>
+    <div hide-sm>
+        <h1 class="md-display-4 marginBNone boldText" hide-sm>
+            <span class="colorOne">alec</span><span class="colorTwo">hewitt</span>
+        </h1>
 
         <h3 class="md-headline centerText colorTwo">SOFTWARE DEVELOPER</h3>
-        <md-icon md-font-icon="icon-home"></md-icon>
+    </div>
+    <div hide-gt-sm>
+        <!-- Heading for smaller devices: -->
+        <h1 class="md-display-3 marginBNone boldText" hide-gt-sm>
+            <span class="colorOne">alec</span><span class="colorTwo">hewitt</span>
+        </h1>
+
+        <h3 class="md-title centerText colorTwo">SOFTWARE DEVELOPER</h3>
     </div>
 
     <div class="width100">
@@ -104,7 +112,8 @@
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="about">
                     <md-content class="md-padding">
-                        <h2 class="md-display-1">About</h2>
+                        <h2 class="md-display-1" hide-sm>About</h2>
+                        <h2 class="md-headline" hide-gt-sm>About</h2>
 
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
                             Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales
@@ -120,7 +129,8 @@
 
                 <md-tab label="work">
                     <md-content class="md-padding">
-                        <h2 class="md-display-1">Work</h2>
+                        <h2 class="md-display-1" hide-sm>Work</h2>
+                        <h2 class="md-headline" hide-gt-sm>Work</h2>
 
                         <p>Below is a selection of my work</p>
 

@@ -1,7 +1,8 @@
 <md-content class="md-padding" ng-controller="ContactFormCtrl as contactFrmCtrl">
     <div>
 
-        <h2 class="md-display-1">Contact</h2>
+        <h2 class="md-display-1" hide-sm>Contact</h2>
+        <h2 class="md-headline" hide-gt-sm>Contact</h2>
 
         <div ng-if="contactFrmCtrl.isEmailSent()">
             <p>Thanks {{contactFrmCtrl.name}} for your message. I will try to get back in touch as soon as possible.</p>
