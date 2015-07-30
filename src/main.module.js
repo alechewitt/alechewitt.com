@@ -8,7 +8,7 @@ import ContactFormController from "./contact-form.controller.js";
 import WorkController from "./work.controller.js";
 import WorkInfoController from "./work-info.controller.js";
 
-let app = angular.module("mainModule", ["ngMaterial"]);
+let app = angular.module("mainModule", ["ngMaterial", "ngMessages"]);
 
 app.directive("contactForm", ContactFormDir);
 app.controller("ContactFormCtrl", ContactFormController);

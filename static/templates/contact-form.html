@@ -2,35 +2,47 @@
     <div>
 
         <h2 class="md-display-1">Contact</h2>
-        <p>Please use the contact form below to contact me.</p>
 
-        <form name="contactFrmCtrl.contactForm"
-              novalidate
-              layout="column"
-              layout-align="center center"
-              ng-submit="contactFrmCtrl.sendEmail()">
-            <md-input-container class="width100">
-                <label>Your Name</label>
-                <input required name="name" ng-model="contactFrmCtrl.name">
-                <div ng-messages="contactFrmCtrl.contactForm.name.$error" ng-if="contactFrmCtrl.contactForm.name.$touched">
-                    <div ng-message="required">Please fill out your name so I know who is contacting me!</div>
-                </div>
-            </md-input-container>
-            <md-input-container class="width100">
-                <label>Email</label>
-                <input required name="email" ng-model="contactFrmCtrl.email">
-                <div ng-messages="contactFrmCtrl.contactForm.email.$error" ng-if="contactFrmCtrl.contactForm.email.$touched">
-                    <div ng-message="required">Please provide your email address so I can reply!</div>
-                </div>
-            </md-input-container>
-            <md-input-container class="width100">
-                <label>Message</label>
-                <textarea required name="message" ng-model="contactFrmCtrl.message"></textarea>
-                <div ng-messages="contactFrmCtrl.contactForm.message.$error" ng-if="contactFrmCtrl.contactForm.message.$touched">
-                    <div ng-message="required">Please send me a message!</div>
-                </div>
-            </md-input-container>
-            <md-button class="md-raised md-primary">Send</md-button>
-        </form>
+        <div ng-if="contactFrmCtrl.isEmailSent()">
+            <p>Thanks {{contactFrmCtrl.name}} for your message. I will try to get back in touch as soon as possible.</p>
+        </div>
+
+        <div ng-if="contactFrmCtrl.isEmailError()">
+            <p class="colorRed">There appears to be an error with sending messages at the minute. </p>
+            <p class="colorRed">Please try again later.</p>
+        </div>
+
+        <div ng-if="!contactFrmCtrl.isEmailSent() && !contactFrmCtrl.isEmailError()">
+            <form name="contactFrmCtrl.contactForm"
+                  novalidate
+                  layout="column"
+                  layout-align="center center"
+                  ng-submit="contactFrmCtrl.sendEmail()">
+                <md-input-container class="width100">
+                    <label>Your Name</label>
+                    <input required name="name" ng-model="contactFrmCtrl.name">
+                    <div ng-messages="contactFrmCtrl.contactForm.name.$error" ng-if="contactFrmCtrl.contactForm.name.$touched">
+                        <div ng-message="required">Please fill out your name so I know who is contacting me!</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="width100">
+                    <label>Email</label>
+                    <input required type="email" name="email" ng-model="contactFrmCtrl.email">
+                    <div ng-messages="contactFrmCtrl.contactForm.email.$error" ng-if="contactFrmCtrl.contactForm.email.$touched">
+                        <div ng-message="required">Please provide your email address so I can reply!</div>
+                        <div ng-message="email">Looks likes this email is invalid.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="width100">
+                    <label>Message</label>
+                    <textarea required name="message" ng-model="contactFrmCtrl.message"></textarea>
+                    <div ng-messages="contactFrmCtrl.contactForm.message.$error" ng-if="contactFrmCtrl.contactForm.message.$touched">
+                        <div ng-message="required">Please send me a message!</div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-raised md-primary">Send</md-button>
+            </form>
+        </div>
+
     </div>
 </md-content>

@@ -12,6 +12,14 @@ export default class ContactFormController {
         this.emailError = false;
     }
 
+    isEmailSent() {
+        return this.emailSent;
+    }
+
+    isEmailError() {
+        return this.emailError;
+    }
+
     sendEmail() {
         if (this.contactForm.$valid) {
             let sendEmailRequest = this.http_({
