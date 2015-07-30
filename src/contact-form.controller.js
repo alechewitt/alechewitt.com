@@ -21,6 +21,10 @@ export default class ContactFormController {
     }
 
     sendEmail() {
+        this.contactForm.name.$setTouched();
+        this.contactForm.email.$setTouched();
+        this.contactForm.message.$setTouched();
+
         if (this.contactForm.$valid) {
             let sendEmailRequest = this.http_({
                 method: "post",
