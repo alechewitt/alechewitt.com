@@ -108,7 +108,6 @@
 
     <div class="width100">
         <md-content class="md-padding">
-            <!--<md-tabs md-border-bottom>-->
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="about">
                     <md-content class="md-padding">
@@ -134,10 +133,10 @@
 
                         <p>Below is a selection of my work</p>
 
-
                         <div ng-controller="WorkController as workCtrl" flex>
                             <md-grid-list
-                                    md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5"
+                                    md-cols-sm="1"
+                                    md-cols-gt-sm="5"
                                     md-row-height-gt-md="1:1" md-row-height="4:3"
                                     md-gutter="8px" md-gutter-gt-sm="4px" class="workTiles">
 

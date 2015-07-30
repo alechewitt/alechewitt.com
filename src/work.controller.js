@@ -15,7 +15,7 @@ export default class WorkController {
                 rowSpan: 2,
                 colSpan: 3,
                 colSpanMd: 3,
-                colSpanSm: 5
+                colSpanSm: 1
             },
             {
                 id: "drawBuzz",
@@ -25,7 +25,7 @@ export default class WorkController {
                 rowSpan: 1,
                 colSpan: 2,
                 colSpanMd: 2,
-                colSpanSm: 2
+                colSpanSm: 1
             },
             {
                 id: "colorCrumble",
@@ -35,7 +35,7 @@ export default class WorkController {
                 rowSpan: 2,
                 colSpan: 2,
                 colSpanMd: 2,
-                colSpanSm: 2
+                colSpanSm: 1
             },
             {
                 id: "topOfTheBottles",
@@ -45,7 +45,7 @@ export default class WorkController {
                 rowSpan: 1,
                 colSpan: 3,
                 colSpanMd: 3,
-                colSpanSm: 3
+                colSpanSm: 1
             }
         ]
     }
