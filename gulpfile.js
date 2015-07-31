@@ -93,15 +93,16 @@ gulp.task("build-sources", [], function () {
 });
 
 gulp.task("build-html", [], function () {
-    var opotions = {
+    var options = {
         collapseWhitespace: true,
         removeComments    : true,
         caseSensitive     : true,
         minifyJS          : true,
         minifyCSS         : true
+
     };
     gulp.src("./index.html")
-        .pipe(process.env.isProduction === "true" ? htmlMin(opotions) : gutil.noop())
+        .pipe(process.env.isProduction === "true" ? htmlMin(options) : gutil.noop())
         .pipe(gulp.dest('./dist'));
 });
 
