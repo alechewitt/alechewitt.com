@@ -12,18 +12,16 @@ const uglify = require("gulp-uglify");
 const eslint = require("gulp-eslint");
 
 
-
-
 /// Gulp & Plugins.
 const gulp = require("gulp");
 const gutil = require("gulp-util");
 const gulpif = require("gulp-if");
 const babel = require("gulp-babel");
 const sourcemaps = require("gulp-sourcemaps");
+var htmlMin = require('gulp-htmlmin');
 
 
-
-gulp.task("lint", function() {
+gulp.task("lint", function () {
     var files = "src/**/*.js";
     gutil.log("Linting files:", files);
     return gulp.src(files)
@@ -58,18 +56,11 @@ var bundle = function (bundler, path) {
 };
 
 
-
-
 /**
  * Creates an app build task.
  */
 gulp.task("build-sources", [], function () {
-    console.log("process.env.isProduction: ", process.env.isProduction);
-    console.log(typeof process.env.isProduction);
-   // Node forces all environmental variables to be a string.
-    console.log(process.env.isProduction === "true");
     var watch = !(process.env.isProduction === "true");
-    console.log("Watch: ", watch);
     var browserifyOptions = {
         entries     : "./src/main.module.js",
         debug       : true,
@@ -101,14 +92,50 @@ gulp.task("build-sources", [], function () {
     return bundle(bundler, "./dist");
 });
 
-gulp.task("develop", [], function() {
-    process.env.isProduction = false;
-    sequence(["build-sources"]);
+gulp.task("build-html", [], function () {
+    var opotions = {
+        collapseWhitespace: true,
+        removeComments    : true,
+        caseSensitive     : true,
+        minifyJS          : true,
+        minifyCSS         : true
+    };
+    gulp.src("./index.html")
+        .pipe(process.env.isProduction === "true" ? htmlMin(opotions) : gutil.noop())
+        .pipe(gulp.dest('./dist'));
 });
 
-gulp.task("build-production", [], function() {
+gulp.task("start_dev_server", function (done) {
+    exec("python /usr/local/google_appengine/dev_appserver.py ./", function(err, stdout, stderr){
+        console.log(err);
+        console.log(stdout);
+        console.log(stderr);
+        done();
+    });
+});
+
+gulp.task("watch-html", function(done){
+    // We watch the index page for changes
+    gulp.watch(["./index.html"], ["build-html"]);
+    done();
+});
+
+gulp.task("develop", [], function (done) {
+    process.env.isProduction = false;
+    return sequence(
+        [
+            "build-sources",
+            "build-html",
+            "watch-html"
+        ],
+        "start_dev_server",
+        done
+    );
+});
+
+gulp.task("build-production", [], function () {
     process.env.isProduction = true;
-    sequence(["build-sources"]);
+    sequence(["build-sources", "build-html"]);
 });
 
 

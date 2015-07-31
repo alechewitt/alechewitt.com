@@ -2,22 +2,29 @@
 <html ng-app="mainModule">
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1"/>
+
     <title>Alec Hewitt</title>
+
+    <!-- Fonts and styles -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
-    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">-->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet'>
 
-    <meta name="viewport" content="initial-scale=1"/>
-    <!-- Angular Material Dependencies -->
+    <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+    <!-- Angular Material Dependencies-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-messages.js"></script>
 
-    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-messages.js"></script>-->
+    <!-- Angular Material-->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
 
+    <!-- Main Bundle file-->
     <script src="/dist/bundle.js"></script>
+
+    <!-- Custom Styles -->
     <style>
         .colorOne {
             color : #FF9800;
@@ -43,8 +50,9 @@
             width : 100%;
         }
 
-        .colorRed {color:red;}
-
+        .colorRed {
+            color : red;
+        }
 
         .workTiles #immerseLearning {
             background          : url("/static/images/immerse.jpg");
@@ -66,6 +74,7 @@
             background-repeat   : no-repeat;
             background-position : center center;
         }
+
         .workTiles #colorCrumble {
             background          : url("/static/images/color_crumble.png");
             background-size     : cover;
@@ -75,21 +84,23 @@
 
         .workTiles md-grid-tile md-grid-tile-footer {
             background : rgba(0, 0, 0, 0.68);
-            /*height: 36px; */
         }
 
         .infoSheet {
             background : rgba(0, 0, 0, 0.68);
             color      : white;
         }
+
         .colorWhite {
-            color: white;
+            color : white;
         }
 
     </style>
 </head>
+
 <body>
 <div layout="column" layout-align="center center">
+    <!-- Heading for larger devices -->
     <div hide-sm>
         <h1 class="md-display-4 marginBNone boldText" hide-sm>
             <span class="colorOne">alec</span><span class="colorTwo">hewitt</span>
@@ -97,8 +108,9 @@
 
         <h3 class="md-headline centerText colorTwo">SOFTWARE DEVELOPER</h3>
     </div>
+
+    <!-- Heading for smaller devices: -->
     <div hide-gt-sm>
-        <!-- Heading for smaller devices: -->
         <h1 class="md-display-3 marginBNone boldText" hide-gt-sm>
             <span class="colorOne">alec</span><span class="colorTwo">hewitt</span>
         </h1>
@@ -111,13 +123,42 @@
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="about">
                     <md-content class="md-padding">
-                        <h2 class="md-display-1" hide-sm>About</h2>
-                        <h2 class="md-headline" hide-gt-sm>About</h2>
+                        <h2 class="md-display-1" hide-sm>Hi there!</h2>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
-                            Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales
-                            pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies
-                            mi.</p>
+                        <h2 class="md-headline" hide-gt-sm>Hi there!</h2>
+
+                        <p>
+                            Welcome to my site. I am a Senior Software Developer at Immerse Learning. I love
+                            working with technology and my current job at Immerse is great. It gives me the opportunity
+                            to work with some cutting edge web tech, ranging from building a multiplayer websocket
+                            server in Go Lang to experimenting with WebGL and the latest Javascript ES6 spec.
+                        </p>
+
+                        <p>
+                            My route into computer science was a fairly unconventional one. Having initially studied
+                            Architecture, which was a brilliant degree, my excitement with how technology was advancing
+                            the world enticed me into the world of computing.
+                        </p>
+
+                        <p>
+                            Prior to working at Immerse I have run my own company which connected language learners and
+                            teachers, as well as working at a number of smaller startups. With every new project I take
+                            on I always try to satisfy my passion for learning by learning a new technology or language.
+                            This has given me experience with a variety of different technologies.
+                        </p>
+
+                        <p>
+                            In my spare time if I am not programming a new game I will probably be taking part in a
+                            cycle race, or planning a kayaking adventure down the Yangtze!
+                        </p>
+
+                        <p>
+                            Feel free to get in touch.
+                        </p>
+
+                        <p>
+                            Alec
+                        </p>
                     </md-content>
                 </md-tab>
 
@@ -129,9 +170,10 @@
                 <md-tab label="work">
                     <md-content class="md-padding">
                         <h2 class="md-display-1" hide-sm>Work</h2>
+
                         <h2 class="md-headline" hide-gt-sm>Work</h2>
 
-                        <p>Below is a selection of my work</p>
+                        <p>Below is a selection of the projects I am currently working on. Feel free to contact me if you would like to see more or examine the source code!</p>
 
                         <div ng-controller="WorkController as workCtrl" flex>
                             <md-grid-list
@@ -141,11 +183,11 @@
                                     md-gutter="8px" md-gutter-gt-sm="4px" class="workTiles">
 
                                 <md-grid-tile ng-repeat="tile in workCtrl.workTiles"
-                                        md-rowspan="{{tile.rowSpan}}"
-                                        md-colspan="{{tile.colSpan}}"
-                                        md-colspan-md="{{tile.colSpanMd}}"
-                                        md-colspan-sm="{{tile.colSpanSm}}"
-                                        id="{{tile.id}}">
+                                              md-rowspan="{{tile.rowSpan}}"
+                                              md-colspan="{{tile.colSpan}}"
+                                              md-colspan-md="{{tile.colSpanMd}}"
+                                              md-colspan-sm="{{tile.colSpanSm}}"
+                                              id="{{tile.id}}">
                                     <md-grid-tile-footer ng-hide="tile.infoShown" class="md-padding">
                                         <md-button ng-click="workCtrl.showInfo(tile)" flex>
                                             {{tile.title}}

@@ -5,10 +5,9 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /dist/(.*\.js)
-  mime_type: text/javascript
+- url: /dist/(.+)
   static_files: dist/\1
-  upload: dist/(.*\.js)
+  upload: dist/(.*)
 
 - url: /static/(.+)
   static_files: static/\1
@@ -18,8 +17,8 @@ handlers:
   script: main.app
 
 - url: /.*
-  static_files: index.html
-  upload: index.html
+  static_files: dist/index.html
+  upload: dist/index.html
 
 skip_files:
 - ^(.*/)?#.*#$

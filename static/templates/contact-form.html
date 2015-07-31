@@ -14,6 +14,7 @@
         </div>
 
         <div ng-if="!contactFrmCtrl.isEmailSent() && !contactFrmCtrl.isEmailError()">
+            <p>Please use the form below to get in touch.</p>
             <form name="contactFrmCtrl.contactForm"
                   novalidate
                   layout="column"
@@ -27,7 +28,7 @@
                     </div>
                 </md-input-container>
                 <md-input-container class="width100">
-                    <label>Email</label>
+                    <label>Your Email</label>
                     <input required type="email" name="email" ng-model="contactFrmCtrl.email">
                     <div ng-messages="contactFrmCtrl.contactForm.email.$error" ng-if="contactFrmCtrl.contactForm.email.$touched">
                         <div ng-message="required">Please provide your email address so I can reply!</div>
@@ -35,7 +36,7 @@
                     </div>
                 </md-input-container>
                 <md-input-container class="width100">
-                    <label>Message</label>
+                    <label>Your Message</label>
                     <textarea required name="message" ng-model="contactFrmCtrl.message"></textarea>
                     <div ng-messages="contactFrmCtrl.contactForm.message.$error" ng-if="contactFrmCtrl.contactForm.message.$touched">
                         <div ng-message="required">Please send me a message!</div>
