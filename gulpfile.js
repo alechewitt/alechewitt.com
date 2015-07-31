@@ -22,8 +22,6 @@ const babel = require("gulp-babel");
 const sourcemaps = require("gulp-sourcemaps");
 
 
-var watch = true;
-
 
 gulp.task("lint", function() {
     var files = "src/**/*.js";
@@ -50,7 +48,7 @@ var bundle = function (bundler, path) {
         })
         .pipe(source("bundle.js"))
         .pipe(buffer())
-        .pipe(gulpif(process.env.isProduction, uglify({mangle: false})))
+        .pipe(gulpif(process.env.isProduction === "true", uglify({mangle: false})))
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(sourcemaps.write("./"))
         .pipe(gulp.dest(path))
@@ -66,6 +64,12 @@ var bundle = function (bundler, path) {
  * Creates an app build task.
  */
 gulp.task("build-sources", [], function () {
+    console.log("process.env.isProduction: ", process.env.isProduction);
+    console.log(typeof process.env.isProduction);
+   // Node forces all environmental variables to be a string.
+    console.log(process.env.isProduction === "true");
+    var watch = !(process.env.isProduction === "true");
+    console.log("Watch: ", watch);
     var browserifyOptions = {
         entries     : "./src/main.module.js",
         debug       : true,
@@ -95,6 +99,16 @@ gulp.task("build-sources", [], function () {
     }
 
     return bundle(bundler, "./dist");
+});
+
+gulp.task("develop", [], function() {
+    process.env.isProduction = false;
+    sequence(["build-sources"]);
+});
+
+gulp.task("build-production", [], function() {
+    process.env.isProduction = true;
+    sequence(["build-sources"]);
 });
 
 
