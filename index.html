@@ -77,6 +77,14 @@
             color : red;
         }
 
+        .cursorHover:hover{
+            cursor: pointer;
+            background : rgba(0, 0, 0, 0.42);
+        }
+        .cursorHover:focus{
+            outline: none;
+        }
+
         .workTiles #immerseLearning {
             background          : url("/static/images/immerse.jpg");
             background-size     : cover;
@@ -117,6 +125,9 @@
         .colorWhite {
             color : white;
         }
+        .titleMarginTop {
+            margin-top:40px;
+        }
 
     </style>
 </head>
@@ -125,7 +136,7 @@
 <div layout="column" layout-align="center center">
     <!-- Heading for larger devices -->
     <div hide-sm>
-        <h1 class="md-display-4 marginBNone boldText" hide-sm>
+        <h1 class="md-display-4 marginBNone boldText titleMarginTop" hide-sm>
             <span class="colorOne">alec</span><span class="colorTwo">hewitt</span>
         </h1>
 
@@ -192,9 +203,7 @@
 
                 <md-tab label="work">
                     <md-content class="md-padding">
-                        <h2 class="md-display-1" hide-sm>Work</h2>
 
-                        <h2 class="md-headline" hide-gt-sm>Work</h2>
 
                         <p>
                             Below is a selection of the projects I am currently working on. Feel free to contact me if
@@ -206,7 +215,7 @@
                                     md-cols-sm="1"
                                     md-cols-gt-sm="5"
                                     md-row-height-gt-md="1:1" md-row-height="4:3"
-                                    md-gutter="8px" md-gutter-gt-sm="4px" class="workTiles">
+                                    md-gutter="8px" md-gutter-gt-sm="10px" class="workTiles">
 
                                 <md-grid-tile ng-repeat="tile in workCtrl.workTiles"
                                               md-rowspan="{{tile.rowSpan}}"
@@ -214,8 +223,10 @@
                                               md-colspan-md="{{tile.colSpanMd}}"
                                               md-colspan-sm="{{tile.colSpanSm}}"
                                               id="{{tile.id}}">
-                                    <md-grid-tile-footer ng-hide="tile.infoShown" class="md-padding">
-                                        <md-button ng-click="workCtrl.showInfo(tile)" flex>
+                                    <md-grid-tile-footer ng-hide="tile.infoShown"
+                                                         ng-click="workCtrl.showInfo(tile)"
+                                                         class="md-padding cursorHover">
+                                        <md-button flex>
                                             {{tile.title}}
                                         </md-button>
                                     </md-grid-tile-footer>
