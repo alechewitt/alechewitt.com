@@ -7,4 +7,4 @@ To run locally:
 - Install google appengine Python SDK
 - Run: `npm install`
 - Install Gulp globally `npm install gulp -g`
-- run: `gulp develop` which will start the local server and compile all the source, with wtches for when it changes.
+- run: `gulp develop` which will start the local server and compile all the source, with watches for when it changes.
